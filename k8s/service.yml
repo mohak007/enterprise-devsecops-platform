@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: enterprise-devsecops-app
-        image: ghcr.io/YOUR_GITHUB_USERNAME/enterprise-devsecops-app:latest
+        image: ghcr.io/mohak007/enterprise-devsecops-app:latest
         ports:
         - containerPort: 8000
         resources:
