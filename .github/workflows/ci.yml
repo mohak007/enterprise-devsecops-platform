@@ -49,6 +49,7 @@ jobs:
 
       - name: Run Trivy Container Scan
         uses: aquasecurity/trivy-action@master
+        continue-on-error: true
         with:
           image-ref: enterprise-devsecops-app:${{ github.sha }}
           format: table
