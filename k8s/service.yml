@@ -1,28 +1,13 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: enterprise-devsecops-app
-  labels:
-    app: enterprise-devsecops-app
+  name: enterprise-devsecops-service
+  namespace: enterprise-devsecops
 spec:
-  replicas: 2
   selector:
-    matchLabels:
-      app: enterprise-devsecops-app
-  template:
-    metadata:
-      labels:
-        app: enterprise-devsecops-app
-    spec:
-      containers:
-      - name: enterprise-devsecops-app
-        image: ghcr.io/mohak007/enterprise-devsecops-app:latest
-        ports:
-        - containerPort: 8000
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "256Mi"
-            cpu: "500m"
+    app: enterprise-devsecops-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: LoadBalancer
